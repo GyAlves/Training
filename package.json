@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+  "name": "training",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node src/javascript/closures/closure.js",
+    "test": "node src/test.js"
+  }
+}
