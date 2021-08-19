@@ -7,7 +7,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node src/javascript/closures/closure.js",
+    "dev": "node src/javascript/GeneratorsIterators/generatorObj.js",
     "test": "node src/test.js"
   }
 }
