@@ -1,6 +1,6 @@
 // Example one 
 const user = { name: "Gyas", age: 21 }
-console.log("Standar", Object.entries(user))
+console.log("Standard", Object.entries(user))
 
 // Array like 
 const houses = { 1: "Slytherin", 2: "Ravenclaw", 3: "Grifindor", 4: "Hufflepuff" }

@@ -41,6 +41,4 @@ async function kitchen() {
 kitchen();
 
 
-Jot something down
-
 

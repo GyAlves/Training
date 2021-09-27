@@ -1,17 +1,16 @@
 
 // Object.assing
 const person = {
-    name: "Gyas",
-    age: 21,
-    profession: "software developer ",
-    sign: "Pisces"
+    name: "Elijah",
+    age: 35,
+    profession: "Actor",
 }
 
 const skills = {
-    sign: "Aquarius",
     draw: 7,
     guitar: 4,
-    fighting: 10
+    fighting: 10,
+    acting: 50
 }
 
 const person_skills = Object.assign({}, person, skills)

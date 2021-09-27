@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Basic vue app</title>
+    <style>
+        .box {
+            border: 2px solid;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</header>
+
+<body>
+
+    <div id="app">
+        {{greeting}}
+        <input v-model="greeting" />
+
+        <button @click="toggleBox">Show Box</button>
+        <div v-if="isVisible" class="box"></div>
+
+        <login-form />
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+
+        let app = Vue.createApp({
+            data: function () {
+                return {
+                    greeting: "Hello World !!",
+                    isVisible: false
+                }
+            },
+            methods: {
+                toggleBox() {
+                    this.isVisible = !this.isVisible
+                }
+            }
+        })
+        // creating a basic component
+        app.component("login-form", {
+            template: `
+                <form @submit.prevent=handleSubmit>
+                    <h1>{{title}}</h1>
+                    <p v-for="(str, i) in inputs" :key="i">{{str}}</p>
+                    <custom-input v-model="email" :label="emailLabel"/>,
+                    <custom-input v-model="password" :label="Password"/>
+                    <button>Log in </button>
+                </form>
+            `,
+            components: ["custom-input"],
+            data() {
+                return {
+                    title: "Login Form :)",
+                    inputs: [
+                        "email",
+                        "password",
+                        "type"
+                    ],
+                    email: "",
+                    password: "",
+                    emailLabel: "Email",
+                    passwordLabel: "Password"
+                }
+            },
+            methods: {
+                handleSubmit() {
+                    console.log("Submited")
+                    console.log(this.email, this.password)
+                }
+            }
+        })
+        app.component("custom-input", {
+            template:
+                `
+                <label>
+                    {{label}}  
+                    <input type="text" v-model="inputValue"/>  
+                </label>
+            `,
+            props: ["label", "modelValue"],
+            computed: {
+                inputValue: {
+                    get() {
+                        return this.modelValue
+                    },
+                    set(value) {
+                        this.$emit("update:modelValue", value)
+                    }
+                }
+            }
+        })
+
+        app.mount("#app")
+    </script>
+</body>
+
+</html>
+
+<!-- v-model is used for getting a value from inside the component -->
+<!-- The diference between v-if and v-show is that with v-show the element is still
+ rendered and appears in the dom -->
+<!-- v-cloak will hide anything from rendering until the whole vue application is ready -->
+<!-- v-on is specific for events  you can make it smaller by using the @ symbol
+    ex: @click
+-->
+<!-- We can used the v-bind to pass the values from a component father to a child -->
